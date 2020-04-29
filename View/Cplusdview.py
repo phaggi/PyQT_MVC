@@ -6,42 +6,38 @@ from Utility.CplusDMeta import CplusDMeta
 from View.MainWindow import Ui_MainWindow
 
 
-class CplusDView(QMainWindow, CplusDObserver, metaclass=CplusDMeta):
+class Cplusdview(QMainWindow, CplusDObserver, metaclass=CplusDMeta):
     """
-    Класс отвечающий за визуальное представление CplusDModel.
+    Класс отвечающий за визуальное представление Cplusdmodel.
     """
 
-    def __init__(self, inController, inModel, parent=None):
+    def __init__(self, in_controller, in_model, parent=None):
         """
         Конструктор принимает ссылки на модель и контроллер.
         """
         super(QMainWindow, self).__init__(parent)
-        self.mController = inController
-        self.mModel = inModel
+        self.m_controller = in_controller
+        self.m_model = in_model
 
         # подключаем визуальное представление
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         # регистрируем представление в качестве наблюдателя
-        self.mModel.addObserver(self)
+        self.m_model.add_observer(self)
 
         # устанавливаем валидаторы полей ввода данных
         self.ui.le_c.setValidator(QDoubleValidator())
         self.ui.le_d.setValidator(QDoubleValidator())
 
         # связываем событие завершения редактирования с методом контроллера
-        '''self.connectNotify(self.ui.le_c, pyqtSignal("editingFinished()"),
-                     self.mController.setC)
-        self.connectNotify(self.ui.le_d, pyqtSignal("editingFinished()"),
-                     self.mController.setD)'''
-        self.ui.le_c.editingFinished.connect(self.mController.setC)
-        self.ui.le_d.editingFinished.connect(self.mController.setD)
+        self.ui.le_c.editingFinished.connect(self.m_controller.set_c)
+        self.ui.le_d.editingFinished.connect(self.m_controller.set_d)
 
-    def modelIsChanged(self):
+    def model_is_changed(self):
         """
         Метод вызывается при изменении модели.
         Запрашивает и отображает значение суммы.
         """
-        sum = str(self.mModel.sum)
+        sum = str(self.m_model.sum)
         self.ui.le_result.setText(sum)

@@ -1,34 +1,34 @@
-from View.CplusDView import CplusDView
+from View.Cplusdview import Cplusdview
 
 
-class CplusDController():
+class Cplusdcontroller():
     """
-    Класс CplusDController представляет реализацию контроллера.
+    Класс Cplusdcontroller представляет реализацию контроллера.
     Согласовывает работу представления с моделью.
     """
 
-    def __init__(self, inModel):
+    def __init__(self, in_model):
         """
         Конструктор принимает ссылку на модель.
         Конструктор создаёт и отображает представление.
         """
-        self.mModel = inModel
-        self.mView = CplusDView(self, self.mModel)
+        self.m_model = in_model
+        self.m_view = Cplusdview(self, self.m_model)
 
-        self.mView.show()
+        self.m_view.show()
 
-    def setC(self):
+    def set_c(self):
         """
         При завершении редактирования поля ввода данных для C,
         контроллер изменяет свойство c модели.
         """
-        c = self.mView.ui.le_c.text()
-        self.mModel.c = float(c)
+        c = self.m_view.ui.le_c.text()
+        self.m_model.c = float(c)
 
-    def setD(self):
+    def set_d(self):
         """
         При завершении редактирования поля ввода данных для D,
         контроллер изменяет свойство d модели.
         """
-        d = self.mView.ui.le_d.text()
-        self.mModel.d = float(d)
+        d = self.m_view.ui.le_d.text()
+        self.m_model.d = float(d)

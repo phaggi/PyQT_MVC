@@ -7,7 +7,7 @@ class CplusDObserver(metaclass=ABCMeta):
     """
 
     @abstractmethod
-    def modelIsChanged(self):
+    def model_is_changed(self):
         """
         Метод который будет вызван у наблюдателя при изменении модели.
         """

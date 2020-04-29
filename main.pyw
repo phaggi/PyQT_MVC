@@ -1,18 +1,18 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 
-from Model.CplusDModel import CplusDModel
-from Controller.CplusDController import CplusDController
+from Model.Cplusdmodel import Cplusdmodel
+from Controller.Cplusdcontroller import Cplusdcontroller
 
 
 def main():
     app = QApplication(sys.argv)
 
     # создаём модель
-    model = CplusDModel()
+    model = Cplusdmodel()
 
     # создаём контроллер и передаём ему ссылку на модель
-    controller = CplusDController(model)
+    controller = Cplusdcontroller(model)
 
     app.exec()
 
